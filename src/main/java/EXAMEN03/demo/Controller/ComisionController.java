@@ -13,10 +13,10 @@ public class ComisionController {
     @GetMapping("/Comision")
     public String formularioComision(Model model) {
         model.addAttribute("vendedorModel", new VendedorModel());
-        return "Comision"; // Nombre de la vista HTML
+        return "Comision";
     }
 
-    @PostMapping("/Comision") // Asegúrate de que coincida con el HTML
+    @PostMapping("/Comision")
     public String calcularComision(@ModelAttribute("vendedorModel") VendedorModel vendedor, Model model) {
         Double venta = vendedor.getVenta();
         Double totalComision = 0.0;
@@ -31,10 +31,9 @@ public class ComisionController {
             totalComision = venta * 0.1;
         }
 
-        // Formatear la salida con dos decimales
-        model.addAttribute("totalComision", "El total de comisión es: soles  " + String.format("%.2f", totalComision));
+        model.addAttribute("totalComision", "El total de comisión es:  " + String.format("%.2f", totalComision)+" soles");
 
-        return "Comision"; // Retorna la misma vista para mostrar el resultado
+        return "Comision";
     }
 }
 
